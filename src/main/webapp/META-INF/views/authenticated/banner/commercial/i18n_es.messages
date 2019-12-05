@@ -1,0 +1,29 @@
+# i18n_es.messages
+#
+# Copyright (c) 2019 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+authenticated.banner.commercial.form.button.create = Crear
+authenticated.banner.commercial.form.button.return = Volver
+
+authenticated.banner.commercial.banner = Campos del banner
+authenticated.banner.commercial.picture = Foto
+authenticated.banner.commercial.slogan = Eslogan
+authenticated.banner.commercial.targetURL = URL Objetivo
+
+authenticated.banner.commercial.creditCard = Campos de la tarjeta de crédito
+authenticated.banner.commercial.brand = Marca
+authenticated.banner.commercial.cvv = CVV
+authenticated.banner.commercial.expMonth = Mes de expiración
+authenticated.banner.commercial.expYear = Año de expiración
+
+banner.commercial.slogan = Eslogan
+banner.commercial.targetURL = URL Objetivo
+
+authenticated.banner.commercial.form.button.update = Actualizar
+authenticated.banner.commercial.form.button.delete = Borrar

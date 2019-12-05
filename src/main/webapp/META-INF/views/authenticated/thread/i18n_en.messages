@@ -1,0 +1,10 @@
+authenticated.thread.list.label.moment = Creation moment
+authenticated.thread.list.label.title = Title
+authenticated.thread.list.label.participants = Involved users
+
+authenticated.thread.form.label.title = Title
+authenticated.thread.form.label.moment = Creation moment
+authenticated.thread.form.label.participants = Involved users
+authenticated.thread.form.label.messages = Navigate to messages
+
+authenticated.thread.form.button.return = Return 

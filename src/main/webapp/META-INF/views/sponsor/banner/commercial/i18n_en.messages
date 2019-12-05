@@ -1,0 +1,32 @@
+# i18n_en.messages
+#
+# Copyright (c) 2019 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+sponsor.banner.commercial.form.button.create = Create
+sponsor.banner.commercial.form.button.return = Return
+
+sponsor.banner.commercial.banner = Commercial banner fields
+sponsor.banner.commercial.picture = Picture
+sponsor.banner.commercial.slogan = Slogan
+sponsor.banner.commercial.targetURL = Target URL
+
+sponsor.banner.commercial.creditCard = Credit card fields
+sponsor.banner.commercial.brand = Brand
+sponsor.banner.commercial.cvv = CVV
+sponsor.banner.commercial.expMonth = Expiration Month
+sponsor.banner.commercial.expYear = Expiration Year
+
+banner.commercial.slogan = Slogan
+banner.commercial.targetURL = Target URL
+
+sponsor.banner.commercial.form.button.update = Update
+sponsor.banner.commercial.form.button.delete = Delete
+
+error.principal.non-author = You are not the author of this banner!
+error.principal.creditCardNumber = You can not create a commercial banner with an empty credit card number.

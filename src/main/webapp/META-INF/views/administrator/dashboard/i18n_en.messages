@@ -1,0 +1,28 @@
+# i18n_en.messages
+#
+# Copyright (c) 2019 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+numberOfAnnouncements = Number of announcements
+numberOfCompanyRecords = Number of company records
+numberOfInvestorRecords = Number of investor records
+ 
+maximumRewardsRequest = Maximun reward request
+minumumRewardsRequest = Minimun reward request
+avgRewardsRequest = Average rewards request
+stddevRewardsRequest = Stddev rewards request
+
+minimumRewardsOffers = Minimum rewards offers
+maximumRewardsOffers = Maximum rewards offers
+avgRewardsOffers = Average rewards offers
+stddevRewardsOffersFrom = Stddev rewards offers from
+stddevRewardsOffersTo = Stddev rewards offers to
+
+averageNumberOfJobsPerEmployer = Average number of jobs per employer
+averageNumberOfApplicationsPerWorker = Average number of applications per worker
+averageNumberOfApplicationsPerEmployer = Average number of applications per employer

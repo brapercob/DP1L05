@@ -1,0 +1,10 @@
+
+
+anonymous.perezBulletin.list.label.moment = Fecha
+anonymous.perezBulletin.list.label.title = Título
+anonymous.perezBulletin.list.label.content = Contenido
+
+anonymous.perezBulletin.form.label.title = Título
+anonymous.perezBulletin.form.label.content = Contenido
+anonymous.perezBulletin.form.button.create = Publicar
+anonymous.perezBulletin.form.button.return = Volver

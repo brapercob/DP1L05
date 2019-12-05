@@ -1,0 +1,11 @@
+
+authenticated.offer.list.label.moment = Fecha de publicación
+authenticated.offer.list.label.title = Título
+authenticated.offer.list.label.text = Descripción
+authenticated.offer.list.label.ticker = Ticker
+authenticated.offer.list.label.deadline = Fecha límite
+authenticated.offer.list.label.rangeFrom = Oferta desde
+authenticated.offer.list.label.rangeTo = Oferta hasta
+
+authenticated.offer.form.button.create = Crear
+authenticated.offer.form.button.return = Volver

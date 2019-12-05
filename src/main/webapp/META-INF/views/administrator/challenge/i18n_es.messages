@@ -1,0 +1,15 @@
+administrator.challenge.list.label.title = Título
+administrator.challenge.list.label.description = Descripción
+administrator.challenge.list.label.deadline = Fecha límite
+administrator.challenge.list.label.goldReward = Recompensa nivel oro
+administrator.challenge.list.label.silverReward = Recompensa nivel plata
+administrator.challenge.list.label.bronzeReward = Recompensa nivel bronce
+administrator.challenge.list.label.goldGoal = Objetivo nivel oro
+administrator.challenge.list.label.silverGoal = Objetivo nivel plata
+administrator.challenge.list.label.bronzeGoal = Objetivo nivel bronce
+
+
+administrator.challenge.form.button.create = Crear
+administrator.challenge.form.button.delete = Borrar
+administrator.challenge.form.button.update = Actualizar
+administrator.challenge.form.button.return = Volver

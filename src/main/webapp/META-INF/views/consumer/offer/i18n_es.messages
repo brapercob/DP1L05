@@ -1,0 +1,13 @@
+
+
+consumer.offer.form.button.create = Crear
+consumer.offer.form.button.return = Volver
+
+consumer.offer.form.label.moment = Momento
+consumer.offer.form.label.title = Título
+consumer.offer.form.label.text = Descripción
+consumer.offer.form.label.ticker = Ticker
+consumer.offer.form.label.deadline = Fecha Límite
+consumer.offer.form.label.rangeFrom = Recompensa desde
+consumer.offer.form.label.rangeTo = Recompensa hasta
+consumer.offer.form.label.confirmation = ¿Seguro que quieres crear esta oferta?

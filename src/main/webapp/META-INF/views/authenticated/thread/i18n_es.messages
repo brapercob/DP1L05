@@ -1,0 +1,10 @@
+authenticated.thread.list.label.moment = Fecha de creación
+authenticated.thread.list.label.title = Título
+authenticated.thread.list.label.participants = Usuarios involucrados
+
+authenticated.thread.form.label.title = Título
+authenticated.thread.form.label.moment = Fecha de creación 
+authenticated.thread.form.label.participants = Usuarios involucrados
+authenticated.thread.form.label.messages = Navegar a los mensajes
+
+authenticated.thread.form.button.return = Volver 

@@ -1,0 +1,24 @@
+# i18n_en.messages
+#
+# Copyright (c) 2019 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+authenticated.banner.non-commercial.form.button.create = Create
+authenticated.banner.non-commercial.form.button.return = Return
+
+authenticated.banner.non-commercial.banner = Banner fields
+authenticated.banner.non-commercial.picture = Picture
+authenticated.banner.non-commercial.slogan = Slogan
+authenticated.banner.non-commercial.targetURL = URL Target
+authenticated.banner.non-commercial.jingle = Jingle
+
+banner.non-commercial.slogan = Slogan
+banner.non-commercial.targetURL = Target URL
+
+authenticated.banner.non-commercial.form.button.update = Actualizar
+authenticated.banner.non-commercial.form.button.delete = Borrar

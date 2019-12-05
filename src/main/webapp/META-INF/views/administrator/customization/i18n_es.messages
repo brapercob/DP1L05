@@ -1,0 +1,8 @@
+administrator.customization.list.label.spamWords = Palabras de Spam
+administrator.customization.list.label.threshold = Límite
+
+administrator.customization.form.button.return = Volver 
+administrator.customization.form.button.update = Actualizar
+
+administrator.customization.form.label.spamWords = Palabras de Spam
+administrator.customization.form.label.threshold = Límite

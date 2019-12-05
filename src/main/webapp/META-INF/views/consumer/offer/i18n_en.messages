@@ -1,0 +1,13 @@
+
+
+consumer.offer.form.button.create = Create
+consumer.offer.form.button.return = Return
+
+consumer.offer.form.label.moment = Moment
+consumer.offer.form.label.title = Title
+consumer.offer.form.label.text = Description
+consumer.offer.form.label.ticker = Ticker
+consumer.offer.form.label.deadline = Deadline
+consumer.offer.form.label.rangeFrom = Reward from
+consumer.offer.form.label.rangeTo = Reward to
+consumer.offer.form.label.confirmation = Confirm creation?

@@ -1,0 +1,10 @@
+authenticated.request.list.label.creationMoment = Fecha de Creación
+authenticated.request.list.label.title = Título
+authenticated.request.list.label.description = Descripción
+authenticated.request.list.label.ticker = Ticker
+authenticated.request.list.label.deadline = Fecha Límite
+authenticated.request.list.label.reward = Recompensa
+
+
+authenticated.request.form.button.create = Crear
+authenticated.request.form.button.return = Volver 

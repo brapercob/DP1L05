@@ -1,0 +1,12 @@
+
+
+authenticated.offer.list.label.moment = Moment
+authenticated.offer.list.label.title = Title
+authenticated.offer.list.label.text = Description
+authenticated.offer.list.label.ticker = Ticker
+authenticated.offer.list.label.deadline = Deadline
+authenticated.offer.list.label.rangeFrom = Offer from
+authenticated.offer.list.label.rangeTo = Offer to
+
+authenticated.offer.form.button.create = Create
+authenticated.offer.form.button.return = Return
