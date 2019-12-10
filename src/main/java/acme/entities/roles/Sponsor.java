@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.lang.Nullable;
 
 import acme.framework.entities.UserRole;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class Sponsor extends UserRole {
 	@NotBlank
 	private String				organizationName;
 
-	@CreditCardNumber
+	@Nullable
+	@CreditCardNumber(ignoreNonDigitCharacters = true)
 	private String				creditCardNumber;
 }

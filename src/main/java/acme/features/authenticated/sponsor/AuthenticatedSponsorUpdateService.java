@@ -44,6 +44,12 @@ public class AuthenticatedSponsorUpdateService implements AbstractUpdateService<
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		//TODO: Comprobar validación de la tarjeta de crédito. Falla al enviarla vacía
+		if(entity.getCreditCardNumber() != null && entity.getCreditCardNumber().isEmpty()) {
+			entity.setCreditCardNumber(null);
+			System.out.println("Ha entrado al if");
+			System.out.println(entity.getCreditCardNumber());
+		}
 	}
 
 	@Override

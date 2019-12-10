@@ -214,9 +214,9 @@
                                  access="!hasRole('Consumer')"/>
             <acme:menu-suboption code="master.menu.user-account.consumer" action="/authenticated/consumer/update"
                                  access="hasRole('Consumer')"/>
-            <acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/sponsor/create"
+            <acme:menu-suboption code="master.menu.user-account.become-sponsor" action="/authenticated/sponsor/create"
                                  access="!hasRole('Sponsor')"/>
-            <acme:menu-suboption code="master.menu.user-account.consumer" action="/authenticated/sponsor/update"
+            <acme:menu-suboption code="master.menu.user-account.sponsor" action="/authenticated/sponsor/update"
                                  access="hasRole('Sponsor')"/>
         </acme:menu-option>
 

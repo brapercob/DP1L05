@@ -45,6 +45,11 @@ public class AuthenticatedSponsorCreateService implements AbstractCreateService<
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		if(entity.getCreditCardNumber() != null && entity.getCreditCardNumber().isEmpty()) {
+			entity.setCreditCardNumber(null);
+			System.out.println("Ha entrado al if");
+			System.out.println(entity.getCreditCardNumber());
+		}
 	}
 
 	@Override
@@ -79,6 +84,7 @@ public class AuthenticatedSponsorCreateService implements AbstractCreateService<
 		userAccount = this.repository.findOneUserAccountById(userAccountId);
 
 		result = new Sponsor();
+		result.setCreditCardNumber(null);
 		result.setUserAccount(userAccount);
 
 		return result;
