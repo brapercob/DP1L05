@@ -13,6 +13,10 @@ authenticated.sponsor.form.title.update = Actualiza tus datos de patrocinador
 
 authenticated.sponsor.form.label.orgName = Nombre de organizacion
 authenticated.sponsor.form.label.creditCardNumber = Numero de tarjeta de credito
+authenticated.sponsor.form.label.holder = Poseedor
+authenticated.sponsor.form.label.brand = Marca
+authenticated.sponsor.form.label.expMonth = Mes de expiracion
+authenticated.sponsor.form.label.expYear = Anyo de expiracion
 
 authenticated.sponsor.form.button.create = Registrar
 authenticated.sponsor.form.button.update = Actualizar

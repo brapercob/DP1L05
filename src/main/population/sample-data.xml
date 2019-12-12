@@ -294,6 +294,11 @@
 		<property name="slogan" value="¿A que no puedes comerte sólo una?" />
 		<property name="targetURL" value="https://www.pringles.com/es/home.html" />
 		<property name="sponsor" ref="sponsorSponsor1" />
+		<property name="holder" value="Holder CB 1"/>
+		<property name="brand" value="Brand CB1"/>
+		<property name="creditCardNumber" value="379354508162306" />
+		<property name="expirationMonth" value="9"/>
+		<property name="expirationYear" value="2020"/>
 	</bean>
 
 	<bean id="commercialBanner2" class="acme.entities.banners.CommercialBanner">
@@ -301,6 +306,11 @@
 		<property name="slogan" value="Just Do it!" />
 		<property name="targetURL" value="https://www.nike.com/es/" />
 		<property name="sponsor" ref="sponsorSponsor1" />
+		<property name="holder" value="Holder CB 2"/>
+		<property name="brand" value="Brand CB2"/>
+		<property name="creditCardNumber" value="379354508162306" />
+		<property name="expirationMonth" value="9"/>
+		<property name="expirationYear" value="2020"/>
 	</bean>
 
 	<bean id="commercialBanner3" class="acme.entities.banners.CommercialBanner">
@@ -308,6 +318,11 @@
 		<property name="slogan" value="Impossible is nothing!" />
 		<property name="targetURL" value="https://www.adidas.es/" />
 		<property name="sponsor" ref="sponsorSponsor1" />
+		<property name="holder" value="Holder CB 3"/>
+		<property name="brand" value="Brand CB 3"/>
+		<property name="creditCardNumber" value="379354508162306" />
+		<property name="expirationMonth" value="9"/>
+		<property name="expirationYear" value="2020"/>
 	</bean>
 
 	<bean id="commercialBanner4" class="acme.entities.banners.CommercialBanner">
@@ -315,11 +330,15 @@
 		<property name="slogan" value="¿Te gusta conducir?" />
 		<property name="targetURL" value="https://www.bmw.es/es/index.html" />
 		<property name="sponsor" ref="sponsorSponsor1" />
+		<property name="holder" value="Holder CB 4"/>
+		<property name="brand" value="Brand CB 4"/>
+		<property name="creditCardNumber" value="379354508162306" />
+		<property name="expirationMonth" value="9"/>
+		<property name="expirationYear" value="2020"/>
 	</bean>
 
 	<!-- NonCommercialBanner -->
-
-	<bean id="NonCommercialBanner" class="acme.entities.banners.NonCommercialBanner">
+	<bean id="nonCommercialBanner" class="acme.entities.banners.NonCommercialBanner">
 		<property name="picture" value="https://picsum.photos/" />
 		<property name="slogan" value="Im loving it" />
 		<property name="targetURL" value="https://www.mcdonalds.es" />
@@ -327,7 +346,7 @@
 		<property name="sponsor" ref="sponsorSponsor" />
 	</bean>
 
-	<bean id="NonCommercialBanner1" class="acme.entities.banners.NonCommercialBanner">
+	<bean id="nonCommercialBanner1" class="acme.entities.banners.NonCommercialBanner">
 		<property name="picture" value="https://picsum.photos/" />
 		<property name="slogan" value="Open happiness" />
 		<property name="targetURL" value="https://www.cocacola.es/es/home/" />
@@ -335,7 +354,7 @@
 		<property name="sponsor" ref="sponsorSponsor" />
 	</bean>
 
-	<bean id="NonCommercialBanner2" class="acme.entities.banners.NonCommercialBanner">
+	<bean id="nonCommercialBanner2" class="acme.entities.banners.NonCommercialBanner">
 		<property name="picture" value="https://picsum.photos/" />
 		<property name="slogan" value="The power to surprise" />
 		<property name="targetURL" value="https://www.kia.com/worldwide/about_kia/brand/brand_identity.do" />
@@ -666,6 +685,11 @@
 	<bean name="sponsorSponsor" class="acme.entities.roles.Sponsor">
 		<property name="userAccount" ref="sponsorUserAccount" />
 		<property name="organizationName" value="Sponsor S.A." />
+		<property name="holder" value="Holder Sponsor 2"/>
+		<property name="brand" value="Brand sponsor 2"/>
+		<property name="creditCardNumber" value="379354508162306" />
+		<property name="expirationMonth" value="9"/>
+		<property name="expirationYear" value="2020"/>
 	</bean>
 
 	<bean name="sponsorAuthenticated" class="acme.framework.entities.Authenticated">
@@ -696,8 +720,12 @@
 
 	<bean name="sponsorSponsor1" class="acme.entities.roles.Sponsor">
 		<property name="userAccount" ref="sponsorUserAccount1" />
-		<property name="creditCardNumber" value="379354508162306" />
 		<property name="organizationName" value="Sponsor 1 S.A." />
+		<property name="holder" value="Holder Sponsor 1"/>
+		<property name="brand" value="Brand sponsor 1"/>
+		<property name="creditCardNumber" value="379354508162306" />
+		<property name="expirationMonth" value="9"/>
+		<property name="expirationYear" value="2021"/>
 	</bean>
 
 	<bean name="sponsorAuthenticated1" class="acme.framework.entities.Authenticated">

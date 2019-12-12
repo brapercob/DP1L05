@@ -15,7 +15,7 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<acme:form readonly="true">
+<acme:form>
     <fieldset>
         <legend>
             <acme:message code="sponsor.banner.non-commercial.banner"/>
@@ -28,7 +28,6 @@
         <acme:form-textbox code="sponsor.banner.non-commercial.jingle" path="jingle"/>
     </fieldset>
 
-    <div style="visibility: hidden">
     <acme:form-submit test="${command == 'show'}"
                       code="sponsor.banner.non-commercial.form.button.update"
                       action="/sponsor/non-commercial-banner/update"/>
@@ -48,6 +47,6 @@
     <acme:form-submit test="${command == 'delete'}"
                       code="sponsor.banner.non-commercial.form.button.delete"
                       action="/sponsor/non-commercial-banner/delete"/>
-</div>
+
     <acme:form-return code="sponsor.banner.non-commercial.form.button.return"/>
 </acme:form>

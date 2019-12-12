@@ -17,7 +17,12 @@
 
 <acme:form>
 	<acme:form-textbox code="authenticated.sponsor.form.label.orgName" path="organizationName"/>
+	<acme:form-textbox path="holder" code="authenticated.sponsor.form.label.holder"/>
+	<acme:form-textbox path="brand" code="authenticated.sponsor.form.label.brand"/>
 	<acme:form-textbox code="authenticated.sponsor.form.label.creditCardNumber" path="creditCardNumber" placeholder="Example of creditcard (379354508162306)"/>
+	<acme:form-integer path="expirationMonth" code="authenticated.sponsor.form.label.expMonth"/>
+	<acme:form-integer path="expirationYear" code="authenticated.sponsor.form.label.expYear"/>
+
 	
 	<acme:form-submit test="${command == 'create'}" code="authenticated.sponsor.form.button.create" action="/authenticated/sponsor/create"/>
 	<acme:form-submit test="${command == 'update'}" code="authenticated.sponsor.form.button.update" action="/authenticated/sponsor/update"/>

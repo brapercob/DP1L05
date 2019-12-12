@@ -29,4 +29,4 @@ sponsor.banner.commercial.form.button.update = Update
 sponsor.banner.commercial.form.button.delete = Delete
 
 error.principal.non-author = You are not the author of this banner!
-error.principal.creditCardNumber = You can not create a commercial banner with an empty credit card number.
+error.principal.creditCardNumber = You can not create a commercial banner with an empty credit card number

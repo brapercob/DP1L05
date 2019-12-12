@@ -16,14 +16,14 @@ import javax.annotation.PostConstruct;
 @RequestMapping("/sponsor/non-commercial-banner/")
 public class SponsorNonCommercialBannerController extends AbstractController<Sponsor, NonCommercialBanner> {
 
-//	@Autowired
-//	private SponsorNonCommercialBannerCreateService createService;
-//
-//	@Autowired
-//	private SponsorNonCommercialBannerUpdateService updateService;
-//
-//	@Autowired
-//	private SponsorNonCommercialBannerDeleteService deleteService;
+	@Autowired
+	private SponsorNonCommercialBannerCreateService createService;
+
+	@Autowired
+	private SponsorNonCommercialBannerUpdateService updateService;
+
+	@Autowired
+	private SponsorNonCommercialBannerDeleteService deleteService;
 
 	@Autowired
 	private SponsorNonCommercialBannerListService listService;
@@ -33,9 +33,9 @@ public class SponsorNonCommercialBannerController extends AbstractController<Spo
 
 	@PostConstruct
 	private void initialize() {
-//		super.addBasicCommand(BasicCommand.CREATE, this.createService);
-//		super.addBasicCommand(BasicCommand.UPDATE, this.updateService);
-//		super.addBasicCommand(BasicCommand.DELETE, deleteService);
+		super.addBasicCommand(BasicCommand.CREATE, this.createService);
+		super.addBasicCommand(BasicCommand.UPDATE, this.updateService);
+		super.addBasicCommand(BasicCommand.DELETE, deleteService);
 		super.addBasicCommand(BasicCommand.LIST, this.listService);
 		super.addBasicCommand(BasicCommand.SHOW, this.showService);
 	}

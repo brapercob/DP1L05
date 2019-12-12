@@ -17,7 +17,14 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<acme:form readonly="true">
+<acme:form>
+
+	<jstl:if test="${param.error != null}">
+		<acme:alert-error>
+			<acme:message code="error.principal.creditCardNumber"/>
+		</acme:alert-error>
+	</jstl:if>
+
 	<fieldset>
 	<legend>
 		<acme:message code="sponsor.banner.commercial.banner" />
@@ -26,7 +33,7 @@
 		<acme:form-textbox code="sponsor.banner.commercial.slogan" path="slogan" />
 		<acme:form-textbox code="sponsor.banner.commercial.targetURL" path="targetURL" />
 	</fieldset>
-<div style="visibility: hidden">
+
 	<acme:form-submit test="${command == 'show'}"
 					  code="sponsor.banner.commercial.form.button.update"
 					  action="/sponsor/commercial-banner/update"/>
@@ -46,7 +53,6 @@
 	<acme:form-submit test="${command == 'delete'}"
 					  code="sponsor.banner.commercial.form.button.delete"
 					  action="/sponsor/commercial-banner/delete"/>
-</div>
 	<acme:form-return code="sponsor.banner.commercial.form.button.return" />
 
 </acme:form>

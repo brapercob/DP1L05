@@ -43,22 +43,14 @@ public class SponsorCommercialBannerCreateService implements AbstractCreateServi
 		assert entity != null;
 		assert model != null;
 
-		Sponsor sponsor = this.repository.findSponsor(request.getPrincipal().getAccountId() + 1);
-		boolean invalidCreditCard = sponsor.getCreditCardNumber() != null && !sponsor.getCreditCardNumber().equals("");
-
 		request.unbind(entity, model, "picture", "targetURL", "slogan");
-		request.transfer(model, "invalidCreditCard");
 
 	}
 
 	@Override
 	public CommercialBanner instantiate(final Request<CommercialBanner> request) {
 		CommercialBanner cb = new CommercialBanner();
-		Date date = new Date();
-		cb.setPicture("");
-		cb.setSlogan("");
-		cb.setTargetURL("");
-		Sponsor sponsor = this.repository.findSponsor(request.getPrincipal().getAccountId() + 1);
+		Sponsor sponsor = this.repository.findSponsor(request.getPrincipal().getAccountId());
 		cb.setSponsor(sponsor);
 
 		return cb;
@@ -70,9 +62,8 @@ public class SponsorCommercialBannerCreateService implements AbstractCreateServi
 		assert entity != null;
 		assert errors != null;
 
-		Sponsor sponsor = this.repository.findSponsor(request.getPrincipal().getAccountId() + 1);
-		boolean invalidCreditCard = sponsor.getCreditCardNumber() != null && !sponsor.getCreditCardNumber().equals("");
-		errors.state(request, invalidCreditCard, "creditCardNumber", "error.principal.creditCardNumber");
+		Sponsor sponsor = this.repository.findSponsor(request.getPrincipal().getAccountId());
+		//TODO: Comprobar validaciones de la tarjeta de crédito
 
 	}
 
