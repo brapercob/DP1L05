@@ -17,3 +17,5 @@ authenticated.sponsor.form.label.creditCardNumber = Numero de tarjeta de credito
 authenticated.sponsor.form.button.create = Registrar
 authenticated.sponsor.form.button.update = Actualizar
 authenticated.sponsor.form.button.return = Volver
+
+error.creditcard.invalid = Esta tarjeta de crédito no es valida

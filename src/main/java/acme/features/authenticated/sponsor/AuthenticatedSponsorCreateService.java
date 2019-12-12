@@ -45,10 +45,13 @@ public class AuthenticatedSponsorCreateService implements AbstractCreateService<
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		if(entity.getCreditCardNumber() != null && entity.getCreditCardNumber().isEmpty()) {
-			entity.setCreditCardNumber(null);
-			System.out.println("Ha entrado al if");
-			System.out.println(entity.getCreditCardNumber());
+
+		String pattern = "^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\\d{3})\\d{11})$";
+		String creditCard = entity.getCreditCardNumber();
+		if(creditCard.length() > 0) {
+			boolean validCreditCard = creditCard.matches(pattern);
+			errors.state(request, validCreditCard, "creditCardNumber", "error.creditcard.invalid");
+
 		}
 	}
 
