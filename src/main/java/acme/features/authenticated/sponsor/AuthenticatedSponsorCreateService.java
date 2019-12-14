@@ -22,86 +22,103 @@ import acme.framework.services.AbstractCreateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 @Service
 public class AuthenticatedSponsorCreateService implements AbstractCreateService<Authenticated, Sponsor> {
 
-	// Internal state ---------------------------------------------------------
+    // Internal state ---------------------------------------------------------
 
-	@Autowired
-	private AuthenticatedSponsorRepository repository;
+    @Autowired
+    private AuthenticatedSponsorRepository repository;
 
-	// AbstractCreateService<Authenticated, Sponsor> ---------------------------
+    // AbstractCreateService<Authenticated, Sponsor> ---------------------------
 
 
-	@Override
-	public boolean authorise(final Request<Sponsor> request) {
-		assert request != null;
+    @Override
+    public boolean authorise(final Request<Sponsor> request) {
+        assert request != null;
 
-		return true;
-	}
+        return true;
+    }
 
-	@Override
-	public void validate(final Request<Sponsor> request, final Sponsor entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
+    @Override
+    public void validate(final Request<Sponsor> request, final Sponsor entity, final Errors errors) {
+        assert request != null;
+        assert entity != null;
+        assert errors != null;
 
-		//TODO: Comprobar validaciones de la tarjeta de crédito
-	}
+        Calendar actualDate = new GregorianCalendar();
+        Calendar ccDate = new GregorianCalendar();
+        ccDate.set(Calendar.MONTH, entity.getExpirationMonth() - 1);
+        ccDate.set(Calendar.YEAR, entity.getExpirationYear());
+        boolean yearDates = actualDate.get(Calendar.YEAR) <= entity.getExpirationYear();
+        errors.state(request, yearDates, "expirationYear", "error.exp.month");
+        boolean dates = actualDate.get(Calendar.YEAR) == ccDate.get(Calendar.YEAR) && (ccDate.get(Calendar.MONTH) + 1) < actualDate.get(Calendar.MONTH) + 1;
+        errors.state(request, !dates, "expirationMonth", "error.exp.cc.month");
+        errors.state(request, !dates, "expirationYear", "error.exp.cc.month");
+    }
 
-	@Override
-	public void bind(final Request<Sponsor> request, final Sponsor entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
+    @Override
+    public void bind(final Request<Sponsor> request, final Sponsor entity, final Errors errors) {
+        assert request != null;
+        assert entity != null;
+        assert errors != null;
 
-		request.bind(entity, errors);
-	}
+        request.bind(entity, errors);
+    }
 
-	@Override
-	public void unbind(final Request<Sponsor> request, final Sponsor entity, final Model model) {
-		assert request != null;
-		assert entity != null;
-		assert model != null;
+    @Override
+    public void unbind(final Request<Sponsor> request, final Sponsor entity, final Model model) {
+        assert request != null;
+        assert entity != null;
+        assert model != null;
 
-		request.unbind(entity, model, "organizationName", "creditCardNumber");
-	}
+        request.unbind(entity, model, "organizationName", "creditCardNumber", "holder", "brand", "expirationMonth", "expirationYear");
+    }
 
-	@Override
-	public Sponsor instantiate(final Request<Sponsor> request) {
-		assert request != null;
+    @Override
+    public Sponsor instantiate(final Request<Sponsor> request) {
+        assert request != null;
 
-		Sponsor result;
-		Principal principal;
-		int userAccountId;
-		UserAccount userAccount;
+        Sponsor result;
+        Principal principal;
+        int userAccountId;
+        UserAccount userAccount;
 
-		principal = request.getPrincipal();
-		userAccountId = principal.getAccountId();
-		userAccount = this.repository.findOneUserAccountById(userAccountId);
+        principal = request.getPrincipal();
+        userAccountId = principal.getAccountId();
+        userAccount = this.repository.findOneUserAccountById(userAccountId);
 
-		result = new Sponsor();
-		result.setUserAccount(userAccount);
+        result = new Sponsor();
+        result.setUserAccount(userAccount);
+        int month = new GregorianCalendar().get(Calendar.MONTH) + 1;
+        int year = new GregorianCalendar().get(Calendar.YEAR);
+        result.setExpirationMonth(month);
+        result.setExpirationYear(year);
 
-		return result;
-	}
+        return result;
+    }
 
-	@Override
-	public void create(final Request<Sponsor> request, final Sponsor entity) {
-		assert request != null;
-		assert entity != null;
+    @Override
+    public void create(final Request<Sponsor> request, final Sponsor entity) {
+        assert request != null;
+        assert entity != null;
+        //TODO: Preguntar porqué, al darle a enviar con datos nulos devuelve 500 en vez de validación
 
-		this.repository.save(entity);
-	}
+        this.repository.save(entity);
+    }
 
-	@Override
-	public void onSuccess(final Request<Sponsor> request, final Response<Sponsor> response) {
-		assert request != null;
-		assert response != null;
+    @Override
+    public void onSuccess(final Request<Sponsor> request, final Response<Sponsor> response) {
+        assert request != null;
+        assert response != null;
 
-		if (request.isMethod(HttpMethod.POST)) {
-			PrincipalHelper.handleUpdate();
-		}
-	}
+        if (request.isMethod(HttpMethod.POST)) {
+            PrincipalHelper.handleUpdate();
+        }
+    }
 
 }

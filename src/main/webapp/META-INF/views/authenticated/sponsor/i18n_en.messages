@@ -23,3 +23,8 @@ authenticated.sponsor.form.button.update = Update
 authenticated.sponsor.form.button.return = Return
 
 error.creditcard.invalid = This credit card number is not valid
+
+error.exp.month = This year is before the actual
+error.exp.cc.month = This creditCard is expired
+error.exp.month.null = The month can not be null
+error.exp.year.null = The year can not be null

@@ -23,3 +23,8 @@ authenticated.sponsor.form.button.update = Actualizar
 authenticated.sponsor.form.button.return = Volver
 
 error.creditcard.invalid = Esta tarjeta de crédito no es valida
+
+error.exp.month = Este año es anterior al actual
+error.exp.cc.month = Esta tarjeta de crédito está caducada
+error.exp.month.null = El mes no puede ser nulo
+error.exp.year.null = El año no puede ser nulo

@@ -21,90 +21,96 @@ import acme.framework.services.AbstractUpdateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 @Service
 public class AuthenticatedSponsorUpdateService implements AbstractUpdateService<Authenticated, Sponsor> {
 
-	// Internal state ---------------------------------------------------------
+    // Internal state ---------------------------------------------------------
 
-	@Autowired
-	private AuthenticatedSponsorRepository repository;
+    @Autowired
+    private AuthenticatedSponsorRepository repository;
 
 
-	// AbstractUpdateService<Authenticated, Sponsor> interface -----------------
+    // AbstractUpdateService<Authenticated, Sponsor> interface -----------------
 
-	@Override
-	public boolean authorise(final Request<Sponsor> request) {
-		assert request != null;
+    @Override
+    public boolean authorise(final Request<Sponsor> request) {
+        assert request != null;
 
-		return true;
-	}
+        return true;
+    }
 
-	@Override
-	public void validate(final Request<Sponsor> request, final Sponsor entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
+    @Override
+    public void validate(final Request<Sponsor> request, final Sponsor entity, final Errors errors) {
+        assert request != null;
+        assert entity != null;
+        assert errors != null;
 
-		String pattern = "^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\\d{3})\\d{11})$";
-		String creditCard = entity.getCreditCardNumber();
-		if(creditCard.length() > 0) {
-			boolean validCreditCard = creditCard.matches(pattern);
-			errors.state(request, validCreditCard, "creditCardNumber", "error.creditcard.invalid");
+        Calendar actualDate = new GregorianCalendar();
+        Calendar ccDate = new GregorianCalendar();
+        ccDate.set(Calendar.MONTH, entity.getExpirationMonth() - 1);
+        ccDate.set(Calendar.YEAR, entity.getExpirationYear());
+        boolean yearDates = actualDate.get(Calendar.YEAR) <= entity.getExpirationYear();
+        errors.state(request, yearDates, "expirationYear", "error.exp.month");
+        boolean dates = actualDate.get(Calendar.YEAR) == ccDate.get(Calendar.YEAR) && (ccDate.get(Calendar.MONTH) + 1) < actualDate.get(Calendar.MONTH) + 1;
+        errors.state(request, !dates, "expirationMonth", "error.exp.cc.month");
+        errors.state(request, !dates, "expirationYear", "error.exp.cc.month");
 
-		}
+    }
 
-	}
+    @Override
+    public void bind(final Request<Sponsor> request, final Sponsor entity, final Errors errors) {
+        assert request != null;
+        assert entity != null;
+        assert errors != null;
 
-	@Override
-	public void bind(final Request<Sponsor> request, final Sponsor entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
+        request.bind(entity, errors);
+    }
 
-		request.bind(entity, errors);
-	}
+    @Override
+    public void unbind(final Request<Sponsor> request, final Sponsor entity, final Model model) {
+        assert request != null;
+        assert entity != null;
+        assert model != null;
 
-	@Override
-	public void unbind(final Request<Sponsor> request, final Sponsor entity, final Model model) {
-		assert request != null;
-		assert entity != null;
-		assert model != null;
+        request.unbind(entity, model, "organizationName", "creditCardNumber", "holder", "brand", "expirationMonth", "expirationYear");
+    }
 
-		request.unbind(entity, model, "organizationName", "creditCardNumber");
-	}
+    @Override
+    public Sponsor findOne(final Request<Sponsor> request) {
+        assert request != null;
 
-	@Override
-	public Sponsor findOne(final Request<Sponsor> request) {
-		assert request != null;
+        Sponsor result;
+        Principal principal;
+        int userAccountId;
 
-		Sponsor result;
-		Principal principal;
-		int userAccountId;
+        principal = request.getPrincipal();
+        userAccountId = principal.getAccountId();
 
-		principal = request.getPrincipal();
-		userAccountId = principal.getAccountId();
+        result = this.repository.findOneSponsorByUserAccountId(userAccountId);
 
-		result = this.repository.findOneSponsorByUserAccountId(userAccountId);
+        return result;
+    }
 
-		return result;
-	}
+    @Override
+    public void update(final Request<Sponsor> request, final Sponsor entity) {
+        assert request != null;
+        assert entity != null;
 
-	@Override
-	public void update(final Request<Sponsor> request, final Sponsor entity) {
-		assert request != null;
-		assert entity != null;
+        this.repository.save(entity);
+    }
 
-		this.repository.save(entity);
-	}
+    @Override
+    public void onSuccess(final Request<Sponsor> request, final Response<Sponsor> response) {
+        assert request != null;
+        assert response != null;
 
-	@Override
-	public void onSuccess(final Request<Sponsor> request, final Response<Sponsor> response) {
-		assert request != null;
-		assert response != null;
-
-		if (request.isMethod(HttpMethod.POST)) {
-			PrincipalHelper.handleUpdate();
-		}
-	}
+        if (request.isMethod(HttpMethod.POST)) {
+            PrincipalHelper.handleUpdate();
+        }
+    }
 
 }
