@@ -79,7 +79,7 @@ public class AuthenticatedMessageCreateService implements AbstractCreateService<
     public void create(final Request<Message> request, final Message entity) {
         assert request != null;
         assert entity != null;
-        entity.setMoment(entity.setMoment(new Date(System.currentTimeMillis() - 1)););
+        entity.setMoment(new Date(System.currentTimeMillis() - 1));
         this.repository.save(entity);
 
     }
