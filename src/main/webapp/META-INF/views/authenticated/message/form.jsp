@@ -5,9 +5,12 @@
 
 <acme:form>
 	<acme:form-textbox code="authenticated.message.form.label.title" path="title" />
-	<acme:form-moment code="authenticated.message.form.label.moment" path="moment" />
+	<jstl:if test="${command != 'create'}">
+		<acme:form-moment code="authenticated.message.form.label.moment" path="moment" readonly="true" />
+	</jstl:if>
 	<acme:form-textbox code="authenticated.message.form.label.tags" path="tags" />
-	<acme:form-textarea code="authenticated.message.form.label.body" path="body"/>
-
+	<acme:form-textarea code="authenticated.message.form.label.body" path="body" />
+	<acme:form-checkbox code="authenticated.message.form.label.confirmation" path="confirmation" />
+	<acme:form-submit test="${command == 'create'}" code="authenticated.message.form.button.create" action="/authenticated/message/create" />
 	<acme:form-return code="authenticated.message.form.button.return" />
-</acme:form> 
+</acme:form>

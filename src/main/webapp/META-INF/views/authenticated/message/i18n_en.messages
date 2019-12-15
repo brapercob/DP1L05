@@ -6,5 +6,7 @@ authenticated.message.form.label.title = Title
 authenticated.message.form.label.moment = Creation moment
 authenticated.message.form.label.tags = Tags
 authenticated.message.form.label.body = Body
+authenticated.message.form.label.confirmation = Confirm creation?
 
 authenticated.message.form.button.return = Return 
+authenticated.message.form.button.create = Post

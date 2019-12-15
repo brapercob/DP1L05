@@ -57,6 +57,9 @@ master.menu.banner.list.commercial = Lista baners comerciales
 master.menu.job.list = Lista de trabajos
 master.menu.authenticated.thread.list = Lista de hilos
 
+master.menu.authenticated.create = Crear para identificados
+master.menu.authenticated.thread.create = Crear hilo
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador

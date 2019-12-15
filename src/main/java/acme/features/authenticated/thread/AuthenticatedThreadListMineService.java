@@ -38,7 +38,7 @@ public class AuthenticatedThreadListMineService implements AbstractListService<A
 		String userNames = "";
 		Collection<Authenticated> participants = entity.getParticipants();
 		for (Authenticated a : participants) {
-			userNames = userNames.concat(a.getUserAccount().getUsername()).concat(" - ");
+			userNames = userNames.concat(a.getUserAccount().getUsername()).concat(", ");
 		}
 		request.unbind(entity, model, "moment", "title");
 		model.setAttribute("participants", userNames);

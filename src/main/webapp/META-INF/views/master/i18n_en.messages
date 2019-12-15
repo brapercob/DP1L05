@@ -57,6 +57,10 @@ master.menu.banner.list.non-commercial = Non commercial banners's list
 master.menu.job.list = Jobs's list
 master.menu.authenticated.thread.list = List Threads
 
+
+master.menu.authenticated.create = Creates for Authenticated
+master.menu.authenticated.thread.create = Create thread
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator

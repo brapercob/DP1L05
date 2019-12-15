@@ -51,7 +51,7 @@ public class AuthenticatedThreadShowService implements AbstractShowService<Authe
 		String userNames = "";
 		Collection<Authenticated> participants = entity.getParticipants();
 		for (Authenticated a : participants) {
-			userNames = userNames.concat(a.getUserAccount().getUsername()).concat(" - ");
+			userNames = userNames.concat(a.getUserAccount().getUsername()).concat(", ");
 		}
 
 		request.unbind(entity, model, "title", "moment");
