@@ -22,6 +22,12 @@
 			<a href="authenticated/message/list?threadId=${id}"><spring:message code="authenticated.thread.form.label.messages" /></a>
 		</p>
 	</jstl:if>
+	
+	<jstl:if test="${command == 'show'}">
+		<p>
+			<a href="authenticated/authenticated/list_involved?threadId=${id}"><spring:message code="authenticated.thread.form.label.involved" /></a>
+		</p>
+	</jstl:if>
 
 	<jstl:if test="${command == 'show'}">
 		<p>

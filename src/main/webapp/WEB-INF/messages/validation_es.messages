@@ -53,3 +53,5 @@ acme.validation.customization.spamWords = Las palabras por defecto no pueden ser
 acme.validation.offer.rangeTo.greater = Debe ser mayor o igual a 0
 acme.validation.offer.rangeFrom.greater = Debe ser mayor o igual a 0
 acme.validation.offer.rangeTo.correct = Debe ser mayor o igual a recompensa desde
+acme.validation.message.confirmation = Debe confirmar la creación
+acme.validation.message.spam = Spam detectado. Palabras como '"'{0}'"' están prohibidas

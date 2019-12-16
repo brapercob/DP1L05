@@ -10,7 +10,9 @@
 	</jstl:if>
 	<acme:form-textbox code="authenticated.message.form.label.tags" path="tags" />
 	<acme:form-textarea code="authenticated.message.form.label.body" path="body" />
+	<jstl:if test="${command == 'create'}">
 	<acme:form-checkbox code="authenticated.message.form.label.confirmation" path="confirmation" />
+	</jstl:if>
 	<acme:form-submit test="${command == 'create'}" code="authenticated.message.form.button.create" action="/authenticated/message/create?threadId=${threadId}" />
 	<acme:form-return code="authenticated.message.form.button.return" />
 </acme:form>
