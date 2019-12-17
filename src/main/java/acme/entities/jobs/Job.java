@@ -66,9 +66,8 @@ public class Job extends DomainEntity {
 	@ManyToOne(optional = false)
 	private Employer			employer;
 
-	@NotNull
 	@Valid
-	@OneToOne(optional = false, mappedBy = "job")
+	@OneToOne(optional = true, mappedBy = "job")
 	private Descriptor			descriptor;
 
 }

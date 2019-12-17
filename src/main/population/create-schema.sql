@@ -154,7 +154,7 @@
         `aprox_time` integer,
         `description` varchar(255),
         `title` varchar(255),
-        `descriptor_id` integer not null,
+        `descriptor_id` integer,
         primary key (`id`)
     ) engine=InnoDB;
 

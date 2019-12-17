@@ -52,3 +52,6 @@ acme.validation.customization.spamWords = Default words can not be modified
 acme.validation.offer.rangeTo.greater = Must be greater than 0
 acme.validation.offer.rangeFrom.greater = Must be greater than 0
 acme.validation.offer.rangeTo.correct = Must be greater or equal to Reward from
+acme.validation.job.descriptor = Must have a descriptor
+acme.validation.job.duties = Duties must sum up to 100% the weekly workload
+acme.validation.job.spam = This text is considered spam

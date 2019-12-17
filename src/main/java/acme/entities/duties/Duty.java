@@ -34,9 +34,8 @@ public class Duty extends DomainEntity {
 
 	// Relationships ---------------------------------------------------
 
-	@NotNull
 	@Valid
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	private Descriptor			descriptor;
 
 }
