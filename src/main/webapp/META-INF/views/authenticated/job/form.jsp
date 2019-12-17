@@ -31,6 +31,17 @@
 	<a href="authenticated/audit-record/list?jobId=${id}"><spring:message code="authenticated.job.form.label.auditRecord" /></a>
 </p>
 
+<security:authorize access="hasRole('Worker')">
+	<p >
+		<a href="worker/application/create?jobId=${id}"><spring:message code="authenticated.worker.job.form.label.newApplication" /></a>
+	</p>
+</security:authorize>
+
+<security:authorize access="hasRole('Auditor')">
+	<p >
+		<a href="auditor/audit-record/create?jobId=${id}"><spring:message code="authenticated.auditor.job.form.label.newAuditRecord" /></a>
+	</p>
+</security:authorize>
 	
 	<acme:form-return code="employer.job.form.button.return"/>
 

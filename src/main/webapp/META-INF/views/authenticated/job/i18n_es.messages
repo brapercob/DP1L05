@@ -19,6 +19,8 @@ authenticated.job.form.label.salary = Salario
 authenticated.job.form.label.link = Más información
 authenticated.job.form.label.descriptor = Descriptor
 authenticated.job.form.label.auditRecord = Registros de auditoría
+authenticated.worker.job.form.label.newApplication = Solicitar
+authenticated.auditor.job.form.label.newAuditRecord = Nuevo registro de auditoria
 
 
 authenticated.job.form.button.return = Volver

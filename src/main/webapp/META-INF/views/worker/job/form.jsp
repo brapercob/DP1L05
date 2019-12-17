@@ -14,6 +14,7 @@
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <acme:form>
 	<acme:form-textbox code="worker.job.form.label.reference" path="reference"/>
@@ -22,6 +23,10 @@
 	<acme:form-money code="worker.job.form.label.salary" path="salary"/>
 	<acme:form-url code="worker.job.form.label.moreInfo" path="moreInfo"/>
 	<acme:form-textarea code="worker.job.form.label.description" path="description"/>
+	
+	<p>
+		<a href="worker/application/create?jobId=${id}"><spring:message code="worker.job.form.link.newApplication" /></a>
+	</p>
 	
 	<acme:form-return code="worker.job.form.button.return"/>
 

@@ -14,7 +14,10 @@ authenticated.audit-records.list.moment = Fecha de creación
 
 authenticated.audit-records.form.title = Titulo: 
 authenticated.audit-records.form.status = Estado: 
+auditor.audit-records.form.status.draft = Borrador
+auditor.audit-records.form.status.published = Publico
 authenticated.audit-records.form.moment = Fecha de creación 
 authenticated.audit-records.form.body = Cuerpo: 
 
 authenticated.audit-records.form.return = Volver
+auditor.audit-record.form.create = Crear

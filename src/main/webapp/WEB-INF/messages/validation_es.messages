@@ -53,3 +53,5 @@ acme.validation.customization.spamWords = Las palabras por defecto no pueden ser
 acme.validation.offer.rangeTo.greater = Debe ser mayor o igual a 0
 acme.validation.offer.rangeFrom.greater = Debe ser mayor o igual a 0
 acme.validation.offer.rangeTo.correct = Debe ser mayor o igual a recompensa desde
+acme.validation.application.is-published = El trabajo debe estar publicado
+acme.validation.application.is-on-date = La fecha limite ya ha pasado

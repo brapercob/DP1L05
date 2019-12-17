@@ -35,7 +35,7 @@ public class WorkerApplicationShowService implements AbstractShowService<Worker,
 		applicationId = request.getModel().getInteger("id");
 		application = this.repository.findApplicationById(applicationId);
 		principal = request.getPrincipal();
-		worker = this.repository.findWorker(principal.getAccountId());
+		worker = this.repository.findOneWorkerByUsserAccountId(principal.getAccountId());
 
 		result = worker != null && application.getWorker() == worker;
 

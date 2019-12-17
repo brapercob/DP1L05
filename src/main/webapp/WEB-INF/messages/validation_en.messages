@@ -52,3 +52,5 @@ acme.validation.customization.spamWords = Default words can not be modified
 acme.validation.offer.rangeTo.greater = Must be greater than 0
 acme.validation.offer.rangeFrom.greater = Must be greater than 0
 acme.validation.offer.rangeTo.correct = Must be greater or equal to Reward from
+acme.validation.application.is-published = The job must be published
+acme.validation.application.is-on-date = The deadline is done

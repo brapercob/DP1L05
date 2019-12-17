@@ -826,7 +826,7 @@
 	
 	<bean name="application1" class="acme.entities.applications.Application">
 		<property name="reference" value="EMPP-JOBB:WORR" />
-		<property name="creationMoment" value="2018/12/11 23:59"/>
+		<property name="creationMoment" value="2019/12/11 23:59"/>
 		<property name="status" value="pending"/>
 		<property name="statement" value="Lorem ipsum sit dolor amet."/>
 		<property name="skills" value="Lorem"/>
@@ -841,7 +841,7 @@
 	
 	<bean name="application2" class="acme.entities.applications.Application">
 		<property name="reference" value="EMPR-JOBR:WORR" />
-		<property name="creationMoment" value="2018/03/11 23:59"/>
+		<property name="creationMoment" value="2019/12/12 11:00"/>
 		<property name="status" value="pending"/>
 		<property name="statement" value="Lorem ipsum sit dolor amet."/>
 		<property name="skills" value="Lorem"/>

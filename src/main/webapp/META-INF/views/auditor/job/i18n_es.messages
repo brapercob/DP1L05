@@ -19,5 +19,6 @@ auditor.job.form.label.salary = Salario
 auditor.job.form.label.link = Más información
 auditor.job.form.label.descriptor = Descriptor
 auditor.job.form.label.auditRecord = Registros de auditoría
+auditor.job.form.label.newAuditRecord = Nuevo registro de auditoria
 
 auditor.job.form.button.return = Volver
