@@ -20,39 +20,59 @@ public class EmployerApplicationUpdateService implements AbstractUpdateService<E
 
 	@Override
 	public boolean authorise(final Request<Application> request) {
-		// TODO Auto-generated method stub
-		return false;
+		assert request != null;
+		return true;
 	}
 
 	// De la vista a la base de datos
 	@Override
 	public void bind(final Request<Application> request, final Application entity, final Errors errors) {
-		// TODO Auto-generated method stub
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
 
+		request.bind(entity, errors);
 	}
 
 	// De la base de datos a la vista
 	@Override
 	public void unbind(final Request<Application> request, final Application entity, final Model model) {
-		// TODO Auto-generated method stub
+		assert request != null;
+		assert entity != null;
+		assert model != null;
+
+		request.unbind(entity, model, "reference", "creationMoment", "status", "statement", "skills", "qualifications", "justification");
 
 	}
 
 	@Override
 	public Application findOne(final Request<Application> request) {
-		// TODO Auto-generated method stub
-		return null;
+		assert request != null;
+		Application res;
+		int id;
+
+		id = request.getModel().getInteger("id");
+		res = this.repository.findApplicationById(id);
+		return res;
 	}
 
 	@Override
 	public void validate(final Request<Application> request, final Application entity, final Errors errors) {
-		// TODO Auto-generated method stub
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
+
+		if (entity.getStatus().equals("rejected")) {
+			assert entity.getJustification() != "";
+		}
 
 	}
 
 	@Override
 	public void update(final Request<Application> request, final Application entity) {
-		// TODO Auto-generated method stub
+		assert request != null;
+		assert entity != null;
 
+		this.repository.save(entity);
 	}
 }
