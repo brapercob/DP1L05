@@ -42,13 +42,14 @@ public class EmployerApplicationShowService implements AbstractShowService<Emplo
 		return result;
 	}
 
+	// De la base de datos a la vista
 	@Override
 	public void unbind(final Request<Application> request, final Application entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "reference", "creationMoment", "status", "statement", "skills", "qualifications", "job.reference");
+		request.unbind(entity, model, "reference", "creationMoment", "status", "statement", "skills", "qualifications", "job.reference", "justification");
 	}
 
 	@Override

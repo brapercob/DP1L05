@@ -24,6 +24,14 @@
 	<acme:form-textarea code="employer.application.form.label.qualifications" path="qualifications"/>
 	<acme:form-textbox code="employer.application.form.label.job.reference" path="job.reference"/>
 	
+	<acme:form-textbox code="employer.application.form.label.justification" path="justification"/>
+	
+	<acme:form-select path="status" code="employer.application.form.button.check">
+		<acme:form-option code="employer.application.form.button.accepted" value="accepted"/>
+		<acme:form-option code="employer.application.form.button.rejected" value="rejected"/>
+	</acme:form-select>
+	
+	<acme:form-submit code="employer.application.form.button.update" action="/employer/application/update"/>
 	<acme:form-return code="employer.application.form.button.return"/>
 
 </acme:form>

@@ -74,6 +74,8 @@ public class Application extends DomainEntity {
 	@NotBlank
 	private String				qualifications;
 
+	private String				justification;
+
 	@Valid
 	@ManyToOne(optional = false)
 	private Job					job;
