@@ -6,5 +6,9 @@ authenticated.thread.form.label.title = Título
 authenticated.thread.form.label.moment = Fecha de creación 
 authenticated.thread.form.label.participants = Usuarios involucrados
 authenticated.thread.form.label.messages = Navegar a los mensajes
+authenticated.thread.form.label.users = Gestionar participantes
+authenticated.thread.form.label.messages.post = Publicar mensaje
+authenticated.thread.form.label.involved = Listar usuarios participantes
 
 authenticated.thread.form.button.return = Volver 
+authenticated.thread.form.button.create = Crear

@@ -1,6 +1,7 @@
 
 package acme.entities.customization;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -17,6 +18,7 @@ public class Customization extends DomainEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
+	@Column(length = 1024)
 	private String				spamWords;
 
 	@NotNull

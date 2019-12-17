@@ -15,4 +15,4 @@
 		<put-attribute name="body" type="template" value="../authenticated/thread/form.jsp" />
 	</definition>
 
-</tiles-definitions> 
+</tiles-definitions>

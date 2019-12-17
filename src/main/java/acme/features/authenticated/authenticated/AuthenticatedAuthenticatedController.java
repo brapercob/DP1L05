@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.thread;
+package acme.features.authenticated.authenticated;
 
 import javax.annotation.PostConstruct;
 
@@ -8,33 +8,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import acme.components.CustomCommand;
-import acme.entities.threads.Thread;
 import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
 import acme.framework.entities.Authenticated;
 
 @Controller
-@RequestMapping("/authenticated/thread/")
-public class AuthenticatedThreadController extends AbstractController<Authenticated, Thread> {
+@RequestMapping("/authenticated/authenticated/")
+public class AuthenticatedAuthenticatedController extends AbstractController<Authenticated, Authenticated> {
 
 	//Internal state
 
 	@Autowired
-	private AuthenticatedThreadShowService		showService;
+	private AuthenticatedAuthenticatedShowService			showService;
 
 	@Autowired
-	private AuthenticatedThreadListMineService	listMineService;
-
-	@Autowired
-	private AuthenticatedThreadCreateService	createService;
+	private AuthenticatedAuthenticatedListInvolvedService	listInvolvedService;
 
 
 	//Constructors
 	@PostConstruct
 	private void initialise() {
 		super.addBasicCommand(BasicCommand.SHOW, this.showService);
-		super.addBasicCommand(BasicCommand.CREATE, this.createService);
-		super.addCustomCommand(CustomCommand.LIST_MINE, BasicCommand.LIST, this.listMineService);
+		super.addCustomCommand(CustomCommand.LIST_INVOLVED, BasicCommand.LIST, this.listInvolvedService);
 
 	}
 

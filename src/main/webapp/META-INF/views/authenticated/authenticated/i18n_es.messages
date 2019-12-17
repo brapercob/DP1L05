@@ -1,0 +1,11 @@
+authenticated.authenticated.form.label.name = Nombre
+authenticated.authenticated.form.label.surname = Apellido
+authenticated.authenticated.form.label.username = Nombre de usuario
+authenticated.authenticated.form.label.email = Email
+
+authenticated.authenticated.list.label.name = Nombre
+authenticated.authenticated.list.label.surname = Apellido
+authenticated.authenticated.list.label.username = Nombre de usuario
+authenticated.authenticated.list.label.email = Email
+
+authenticated.authenticated.form.button.return = Volver
