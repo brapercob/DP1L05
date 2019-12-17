@@ -1,14 +1,19 @@
 
 package acme.features.auditor.auditRecords;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.customization.Customization;
 import acme.entities.jobs.Job;
 import acme.entities.records.AuditRecord;
 import acme.entities.roles.Auditor;
+import acme.features.administrator.customization.AdministratorCustomizationRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -19,7 +24,10 @@ import acme.framework.services.AbstractCreateService;
 public class AuditorAuditRecordCreateService implements AbstractCreateService<Auditor, AuditRecord> {
 
 	@Autowired
-	AuditorAuditRecordRepository repository;
+	AuditorAuditRecordRepository			repository;
+
+	@Autowired
+	AdministratorCustomizationRepository	customizationRepository;
 
 
 	@Override
@@ -90,6 +98,38 @@ public class AuditorAuditRecordCreateService implements AbstractCreateService<Au
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+
+		boolean spamTitle, spamBody;
+
+		Collection<Customization> c = this.customizationRepository.findCustomization();
+		String spamWords = "";
+		Double threshold = 1.;
+		Double spamCountTitle = 0.;
+		Double spamCountBody = 0.;
+
+		String title = request.getModel().getString("title").toUpperCase();
+		String body = request.getModel().getString("body").toUpperCase();
+
+		for (Customization cus : c) {
+			spamWords = cus.getSpamWords();
+			threshold = cus.getThreshold();
+		}
+		List<String> spamList = Arrays.asList(spamWords.split(","));
+
+		for (String s : spamList) {
+			if (title.contains(s.toUpperCase())) {
+				spamCountTitle += 1.;
+			}
+			if (body.contains(s.toUpperCase())) {
+				spamCountBody += 1.;
+			}
+		}
+
+		spamTitle = spamCountTitle < threshold;
+		errors.state(request, spamTitle, "title", "acme.validation.spam");
+
+		spamBody = spamCountBody < threshold;
+		errors.state(request, spamBody, "body", "acme.validation.spam");
 
 	}
 

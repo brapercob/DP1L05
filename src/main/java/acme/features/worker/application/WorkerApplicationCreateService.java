@@ -1,14 +1,19 @@
 
 package acme.features.worker.application;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.applications.Application;
+import acme.entities.customization.Customization;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Worker;
+import acme.features.administrator.customization.AdministratorCustomizationRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -19,7 +24,10 @@ import acme.framework.services.AbstractCreateService;
 public class WorkerApplicationCreateService implements AbstractCreateService<Worker, Application> {
 
 	@Autowired
-	WorkerApplicationRepository repository;
+	WorkerApplicationRepository				repository;
+
+	@Autowired
+	AdministratorCustomizationRepository	customizationRepository;
 
 
 	@Override
@@ -92,12 +100,13 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		assert entity != null;
 		assert errors != null;
 
+		//Checking the Job
+
 		Job job;
 		int jobId;
 		Date currentDate;
 		Date deadline;
-		boolean isPublished;
-		boolean isOnDate;
+		boolean isPublished, isOnDate;
 
 		jobId = request.getModel().getInteger("jobId");
 		job = this.repository.findOneJobById(jobId);
@@ -109,6 +118,46 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 
 		errors.state(request, isPublished, "Job.status", "acme.validation.application.is-published");
 		errors.state(request, isOnDate, "Job.deadline", "acme.validation.application.is-on-date");
+
+		//Cheking the spamWords
+
+		Collection<Customization> c = this.customizationRepository.findCustomization();
+		String spamWords = "";
+		Double threshold = 1.;
+
+		for (Customization cus : c) {
+			spamWords = cus.getSpamWords();
+			threshold = cus.getThreshold();
+		}
+		List<String> spamList = Arrays.asList(spamWords.split(","));
+
+		String statement = request.getModel().getString("statement").toUpperCase();
+		String skills = request.getModel().getString("skills").toUpperCase();
+		String qualifications = request.getModel().getString("qualifications").toUpperCase();
+		boolean spamStatement, spamSkills, spamQualifications;
+		double sCounterStat = 0.;
+		double sCounterSkills = 0.;
+		double sCounterQual = 0.;
+
+		for (String s : spamList) {
+			if (statement.contains(s.toUpperCase())) {
+				sCounterStat += 1.;
+			}
+			if (skills.contains(s.toUpperCase())) {
+				sCounterSkills += 1.;
+			}
+			if (qualifications.contains(s.toUpperCase())) {
+				sCounterQual += 1.;
+			}
+		}
+
+		spamStatement = sCounterStat < threshold;
+		spamSkills = sCounterSkills < threshold;
+		spamQualifications = sCounterQual < threshold;
+
+		errors.state(request, spamStatement, "statement", "acme.validation.spam");
+		errors.state(request, spamSkills, "skills", "acme.validation.spam");
+		errors.state(request, spamQualifications, "qualifications", "acme.validation.spam");
 
 	}
 
