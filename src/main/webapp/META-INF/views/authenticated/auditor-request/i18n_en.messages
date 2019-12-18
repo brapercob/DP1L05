@@ -1,0 +1,5 @@
+authenticated.auditorRequest.list.label.firm = Firm
+authenticated.auditorRequest.list.label.statement = Statement
+
+authenticated.auditorRequest.form.button.return = Return
+authenticated.auditorRequest.form.button.create = Create

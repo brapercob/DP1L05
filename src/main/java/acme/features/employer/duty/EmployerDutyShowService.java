@@ -34,6 +34,8 @@ public class EmployerDutyShowService implements AbstractShowService<Employer, Du
 		assert model != null;
 
 		request.unbind(entity, model, "title", "description", "aproxTime");
+		boolean jobPublished = entity.getDescriptor().getJob().getStatus().equals("published");
+		model.setAttribute("jobPublished", jobPublished);
 	}
 
 	@Override

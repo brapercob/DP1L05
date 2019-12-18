@@ -1,0 +1,5 @@
+authenticated.auditorRequest.list.label.firm = Empresa
+authenticated.auditorRequest.list.label.statement = Estado
+
+authenticated.auditorRequest.form.button.return = Volver
+authenticated.auditorRequest.form.button.create = Crear

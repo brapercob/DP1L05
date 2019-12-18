@@ -27,7 +27,6 @@
        `id` integer not null,
         `version` integer not null,
         `creation_moment` datetime(6),
-        `justification` varchar(255),
         `qualifications` varchar(255),
         `reference` varchar(255),
         `skills` varchar(255),
@@ -56,6 +55,15 @@
         `user_account_id` integer,
         `firm` varchar(255),
         `statement` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `auditor_request` (
+       `id` integer not null,
+        `version` integer not null,
+        `firm` varchar(255),
+        `statement` varchar(255),
+        `authenticated_id` integer,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -155,7 +163,7 @@
         `aprox_time` integer,
         `description` varchar(255),
         `title` varchar(255),
-        `descriptor_id` integer not null,
+        `descriptor_id` integer,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -406,6 +414,11 @@
        add constraint FK_clqcq9lyspxdxcp6o4f3vkelj 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `auditor_request` 
+       add constraint `FKjonb5lt00rmb868h6gjdjh1to` 
+       foreign key (`authenticated_id`) 
+       references `authenticated` (`id`);
 
     alter table `authenticated` 
        add constraint FK_h52w0f3wjoi68b63wv9vwon57 

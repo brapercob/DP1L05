@@ -18,7 +18,11 @@ employer.job.form.label.deadline = Deadline
 employer.job.form.label.salary = Salary
 employer.job.form.label.link = More information
 employer.job.form.label.descriptor = Descriptor
+employer.job.form.label.descriptor.create = Create descriptor
 employer.job.form.label.auditRecord = Audit Records
+employer.job.form.label.status = Status
 
-
+employer.job.form.button.create = Create
+employer.job.form.button.update = Update
+employer.job.form.button.delete = Delete
 employer.job.form.button.return = Return

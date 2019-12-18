@@ -18,4 +18,7 @@ public interface EmployerDutyRepository extends AbstractRepository {
 	@Query("select d from Duty d where d.id = ?1")
 	Duty findOneById(int id);
 
+	@Query("select coalesce(sum(d.aproxTime),0) from Duty d where d.descriptor.id = ?1")
+	Integer sumDutiesTimeByDescriptorId(int descriptorId);
+
 }

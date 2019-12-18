@@ -1,0 +1,7 @@
+administrator.auditorRequest.list.label.firm = Empresa
+administrator.auditorRequest.list.label.statement = Estado
+
+administrator.auditorRequest.form.button.return = Volver	
+administrator.auditorRequest.form.button.create = Aceptar
+administrator.auditorRequest.form.button.update = Aceptar
+administrator.auditorRequest.form.button.delete = Rechazar

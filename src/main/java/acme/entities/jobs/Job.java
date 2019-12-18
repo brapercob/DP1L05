@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -50,6 +51,7 @@ public class Job extends DomainEntity {
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
+	@Future
 	private Date				deadline;
 
 	@NotNull
@@ -66,9 +68,8 @@ public class Job extends DomainEntity {
 	@ManyToOne(optional = false)
 	private Employer			employer;
 
-	@NotNull
 	@Valid
-	@OneToOne(optional = false, mappedBy = "job")
+	@OneToOne(optional = true, mappedBy = "job")
 	private Descriptor			descriptor;
 
 }

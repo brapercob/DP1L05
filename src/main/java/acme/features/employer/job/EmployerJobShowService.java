@@ -1,11 +1,15 @@
 
 package acme.features.employer.job;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.applications.Application;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
+import acme.features.worker.application.WorkerApplicationRepository;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Principal;
@@ -17,7 +21,10 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 	// Internal state ------------
 
 	@Autowired
-	EmployerJobRepository repository;
+	EmployerJobRepository		repository;
+
+	@Autowired
+	WorkerApplicationRepository	applicationRepository;
 
 
 	// AbstractListService<Employer, Job> interface -----------------
@@ -46,9 +53,20 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-
 		request.unbind(entity, model, "reference", "title", "deadline");
 		request.unbind(entity, model, "salary", "link", "status");
+		Job j = this.repository.findOneJobById(request.getModel().getInteger("id"));
+		boolean hasDesc = false;
+		boolean hasApps = false;
+		if (j.getDescriptor() != null) {
+			hasDesc = true;
+		}
+		Collection<Application> apps = this.applicationRepository.findApplicationsByJobId(entity.getId());
+		if (!apps.isEmpty()) {
+			hasApps = true;
+		}
+		model.setAttribute("hasDesc", hasDesc);
+		model.setAttribute("hasApps", hasApps);
 	}
 
 	@Override
