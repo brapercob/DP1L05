@@ -36,6 +36,9 @@ public class EmployerDutyCreateService implements AbstractCreateService<Employer
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		int descriptorId = request.getModel().getInteger("descriptorId");
+		Descriptor d = this.descriptorRepository.findOneDescriptorById(descriptorId);
+		entity.setDescriptor(d);
 
 		request.bind(entity, errors);
 
@@ -48,18 +51,22 @@ public class EmployerDutyCreateService implements AbstractCreateService<Employer
 		assert model != null;
 
 		request.unbind(entity, model, "title", "description", "aproxTime");
+		model.setAttribute("descriptorId", entity.getDescriptor().getId());
 
 	}
 
 	@Override
 	public Duty instantiate(final Request<Duty> request) {
 		assert request != null;
+		Integer descriptorId;
+		Descriptor descriptor;
+		Duty result;
 
-		Duty result = new Duty();
-		int descriptorId = request.getModel().getInteger("descriptorId");
+		result = new Duty();
+		descriptorId = request.getModel().getInteger("descriptorId");
+		descriptor = this.descriptorRepository.findOneDescriptorById(descriptorId);
 
-		Descriptor d = this.descriptorRepository.findOneDescriptorById(descriptorId);
-		result.setDescriptor(d);
+		result.setDescriptor(descriptor);
 
 		return result;
 	}
@@ -70,6 +77,15 @@ public class EmployerDutyCreateService implements AbstractCreateService<Employer
 		assert entity != null;
 		assert errors != null;
 
+		boolean tooMuchTime;
+		Integer dutiesTime = this.repository.sumDutiesTimeByDescriptorId(entity.getDescriptor().getId());
+		if (entity.getAproxTime() == null) {
+			errors.state(request, entity.getAproxTime() != null, "aproxTime", "javax.validation.constraints.NotNull.message");
+		} else {
+			tooMuchTime = dutiesTime + entity.getAproxTime() <= 100;
+			errors.state(request, tooMuchTime, "aproxTime", "acme.validation.duty.aproxTime");
+		}
+
 	}
 
 	@Override
@@ -77,6 +93,9 @@ public class EmployerDutyCreateService implements AbstractCreateService<Employer
 		assert request != null;
 		assert entity != null;
 
+		Integer descriptorId = request.getModel().getInteger("descriptorId");
+		Descriptor d = this.descriptorRepository.findOneDescriptorById(descriptorId);
+		entity.setDescriptor(d);
 		this.repository.save(entity);
 
 	}

@@ -95,6 +95,8 @@
 			<acme:menu-suboption code="master.menu.job.list" action="/authenticated/job/list"/>
 			<acme:menu-separator />
 			<acme:menu-suboption code="master.menu.authenticated.thread.list" action="/authenticated/thread/list_mine" />
+			<acme:menu-separator />
+			<acme:menu-suboption code="master.menu.authenticated.auditorRequest.create" action="/authenticated/auditor-request/create" />
 					
 		</acme:menu-option>
 
@@ -114,6 +116,8 @@
         	<acme:menu-suboption code="master.menu.administrator.company-record.list" action="/administrator/company-record/list"/>
         	<acme:menu-separator/>
         	<acme:menu-suboption code="master.menu.administrator.challenge.list" action="/administrator/challenge/list"/>
+        	<acme:menu-separator/>
+        	<acme:menu-suboption code="master.menu.administrator.auditorRequest.list" action="/administrator/auditor-request/list"/>
             </acme:menu-option>
         
         <acme:menu-option code="master.menu.administrator.create" access="hasRole('Administrator')">			

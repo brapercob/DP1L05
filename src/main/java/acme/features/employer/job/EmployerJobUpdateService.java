@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.customization.Customization;
-import acme.entities.duties.Duty;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
 import acme.features.administrator.customization.AdministratorCustomizationRepository;
@@ -85,24 +84,18 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 		boolean hasDescriptor;
 		boolean sumDuties = false;
 
-		Job j = this.repository.findOneJobById(request.getModel().getInteger("id"));
-		finalMode = j.getStatus().equals("published");
-		hasDescriptor = j.getDescriptor() != null;
+		finalMode = entity.getStatus().equals("published");
+		hasDescriptor = entity.getDescriptor() != null;
 
 		if (hasDescriptor) {
-			Collection<Duty> duties = this.dutyRepository.findManyByDescriptorId(j.getDescriptor().getId());
-			Integer suma = 0;
-			for (Duty d : duties) {
-				suma += d.getAproxTime();
-			}
-
-			sumDuties = suma == 100;
+			Integer suma = this.dutyRepository.sumDutiesTimeByDescriptorId(entity.getDescriptor().getId());
+			sumDuties = suma != null && suma == 100;
 
 		}
 
 		if (finalMode) {
-			errors.state(request, hasDescriptor, "status", "acme.validation.job.descriptor");
-			errors.state(request, sumDuties, "status", "acme.validation.job.duties");
+			errors.state(request, hasDescriptor, "link", "acme.validation.job.descriptor");
+			errors.state(request, sumDuties, "link", "acme.validation.job.duties");
 		}
 
 		boolean isSpam;

@@ -56,3 +56,5 @@ acme.validation.offer.rangeTo.correct = Debe ser mayor o igual a recompensa desd
 acme.validation.job.descriptor = Debe tener un descriptor
 acme.validation.job.duties = Los deberes deben sumar 100% de la carga de trabajo semanal
 acme.validation.job.spam = Este texto es considerado spam
+acme.validation.duty.aproxTime = La suma total del porcentaje de tiempo de los deberes no puede ser mayor a 100
+acme.validation.auditorRequest = Este usuario ya es Auditor

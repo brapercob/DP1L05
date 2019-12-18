@@ -21,12 +21,15 @@
 	<acme:form-hidden path="hasDesc"/>
 	<acme:form-textbox code="employer.job.form.label.reference" path="reference"/>
 	<acme:form-textbox code="employer.job.form.label.title" path="title"/>
-	<jstl:if test="${command != 'create' }">
-		<jstl:if test="${command == 'update' && status == 'draft'}">
+	
+	<jstl:if test="${command != 'create' && command == 'show' && status == 'draft'}">
 		<acme:form-textbox code="employer.job.form.label.status" path="status"/>
 		</jstl:if>
+		
+		<jstl:if test="${command != 'create' && status == 'published'}">
 		<acme:form-textbox code="employer.job.form.label.status" path="status" readonly="true"/>
 	</jstl:if>
+	
 	<acme:form-moment code="employer.job.form.label.deadline" path="deadline"/>
 	<acme:form-money code="employer.job.form.label.salary" path="salary"/>
 	<acme:form-url code="employer.job.form.label.link" path="link"/>

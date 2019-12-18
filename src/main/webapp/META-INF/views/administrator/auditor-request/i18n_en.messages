@@ -1,0 +1,7 @@
+administrator.auditorRequest.list.label.firm = Firm
+administrator.auditorRequest.list.label.statement = Statement
+
+administrator.auditorRequest.form.button.return = Return
+administrator.auditorRequest.form.button.create = Accept
+administrator.auditorRequest.form.button.update = Accept
+administrator.auditorRequest.form.button.delete = Reject

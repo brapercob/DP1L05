@@ -56,6 +56,8 @@ master.menu.banner.list.commercial = Commercial banners's list
 master.menu.banner.list.non-commercial = Non commercial banners's list
 master.menu.job.list = Jobs's list
 master.menu.authenticated.thread.list = List Threads
+master.menu.authenticated.auditorRequest.create = Request to Auditor
+master.menu.administrator.auditorRequest.list = Auditor requests
 
 # master.menu.administrator ###################################################
 

@@ -48,9 +48,12 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 		assert model != null;
 		request.unbind(entity, model, "reference", "title", "deadline");
 		request.unbind(entity, model, "salary", "link", "status");
-		if (entity.getDescriptor() == null) {
-			model.setAttribute("hasDesc", false);
+		Job j = this.repository.findOneJobById(request.getModel().getInteger("id"));
+		Boolean hasDesc = false;
+		if (j.getDescriptor() != null) {
+			hasDesc = true;
 		}
+		model.setAttribute("hasDesc", hasDesc);
 	}
 
 	@Override

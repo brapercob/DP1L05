@@ -46,7 +46,7 @@
 		action="/employer/descriptor/delete"/>
 	<acme:form-submit test="${command == 'create'}"
 		code="employer.descriptor.form.button.create"
-		action="/employer/descriptor/create"/>
+		action="/employer/descriptor/create?jobId=${jobId}"/>
 	<acme:form-submit test="${command == 'update'}"
 		code="employer.descriptor.form.button.update"
 		action="/employer/descriptor/update"/>

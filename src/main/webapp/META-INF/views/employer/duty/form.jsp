@@ -30,7 +30,7 @@
 		action="/employer/duty/delete"/>
 	<acme:form-submit test="${command == 'create'}"
 		code="employer.duty.form.button.create"
-		action="/employer/duty/create"/>
+		action="/employer/duty/create?descriptorId=${descriptorId}"/>
 	<acme:form-submit test="${command == 'update'}"
 		code="employer.duty.form.button.update"
 		action="/employer/duty/update"/>
