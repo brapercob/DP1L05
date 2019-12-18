@@ -13,7 +13,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AuthenticatedThreadRepository extends AbstractRepository {
 
-	@Query("select t from Thread t where t.id = ?1")
+	@Query("select t,tp from Thread t join fetch t.participants tp where t.id = ?1")
 	Thread findOneThreadById(int id);
 
 	@Query("select distinct t from Thread t join fetch t.participants tp")

@@ -28,12 +28,16 @@ public class AuthenticatedThreadController extends AbstractController<Authentica
 	@Autowired
 	private AuthenticatedThreadCreateService	createService;
 
+	@Autowired
+	private AuthenticatedThreadUpdateService	updateService;
+
 
 	//Constructors
 	@PostConstruct
 	private void initialise() {
 		super.addBasicCommand(BasicCommand.SHOW, this.showService);
 		super.addBasicCommand(BasicCommand.CREATE, this.createService);
+		super.addBasicCommand(BasicCommand.UPDATE, this.updateService);
 		super.addCustomCommand(CustomCommand.LIST_MINE, BasicCommand.LIST, this.listMineService);
 
 	}

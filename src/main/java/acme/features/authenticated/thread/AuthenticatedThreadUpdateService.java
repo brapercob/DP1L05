@@ -3,7 +3,6 @@ package acme.features.authenticated.thread;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +13,10 @@ import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
 import acme.framework.entities.Principal;
-import acme.framework.services.AbstractCreateService;
+import acme.framework.services.AbstractUpdateService;
 
 @Service
-public class AuthenticatedThreadCreateService implements AbstractCreateService<Authenticated, Thread> {
+public class AuthenticatedThreadUpdateService implements AbstractUpdateService<Authenticated, Thread> {
 
 	@Autowired
 	private AuthenticatedThreadRepository repository;
@@ -27,7 +26,18 @@ public class AuthenticatedThreadCreateService implements AbstractCreateService<A
 	public boolean authorise(final Request<Thread> request) {
 		assert request != null;
 
-		return true;
+		boolean result = false;
+		Principal principal;
+		int threadId;
+		Thread thread;
+
+		threadId = request.getModel().getInteger("id");
+		thread = this.repository.findOneThreadById(threadId);
+		principal = request.getPrincipal();
+		if (thread.getAuthenticated().getUserAccount().getId() == principal.getAccountId()) {
+			result = true;
+		}
+		return result;
 	}
 
 	@Override
@@ -46,41 +56,30 @@ public class AuthenticatedThreadCreateService implements AbstractCreateService<A
 		assert entity != null;
 		assert model != null;
 
-		Collection<Authenticated> participants = this.repository.findManyAuthenticated();
+		Collection<Authenticated> participants = entity.getParticipants();
 
 		request.unbind(entity, model, "title");
 
 		model.setAttribute("participants", participants);
 		for (Authenticated au : participants) {
 			Integer auId = au.getId();
-			model.setAttribute(auId.toString(), false);
+			model.setAttribute(auId.toString(), true);
 		}
+
 	}
 
 	@Override
-	public Thread instantiate(final Request<Thread> request) {
+	public Thread findOne(final Request<Thread> request) {
 		assert request != null;
 
 		Thread result;
-		result = new Thread();
-		Date moment;
-		Principal principal;
-		int accountId;
-		Authenticated authenticated;
+		int id;
 
-		principal = request.getPrincipal();
-		accountId = principal.getActiveRoleId();
-		authenticated = this.repository.findOneAuthenticatedById(accountId);
-		moment = new Date(System.currentTimeMillis() - 1);
-
-		Collection<Authenticated> participants = new ArrayList<Authenticated>();
-		participants.add(authenticated);
-
-		result.setParticipants(participants);
-		result.setMoment(moment);
-		result.setAuthenticated(authenticated);
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneThreadById(id);
 
 		return result;
+
 	}
 
 	@Override
@@ -89,37 +88,39 @@ public class AuthenticatedThreadCreateService implements AbstractCreateService<A
 		assert entity != null;
 		assert errors != null;
 
+		boolean isAuthenticated;
+
+		Principal principal = request.getPrincipal();
+		Integer authId = principal.getActiveRoleId();
+		boolean cB = request.getModel().getBoolean(authId.toString());
+
+		isAuthenticated = cB == true;
+		errors.state(request, isAuthenticated, authId.toString(), "acme.validation.thread.isAuthenticated");
+
 		if (errors.hasErrors()) {
-			Collection<Authenticated> participants = this.repository.findManyAuthenticated();
+			Collection<Authenticated> participants = entity.getParticipants();
 			request.getModel().setAttribute("participants", participants);
 			for (Authenticated au : participants) {
 				Integer auId = au.getId();
-				request.getModel().setAttribute(auId.toString(), false);
+				request.getModel().setAttribute(auId.toString(), true);
 			}
 		}
 	}
 
 	@Override
-	public void create(final Request<Thread> request, final Thread entity) {
+	public void update(final Request<Thread> request, final Thread entity) {
 		assert request != null;
 		assert entity != null;
 
-		Principal principal = request.getPrincipal();
-		int authId = principal.getActiveRoleId();
-		Authenticated auth = this.repository.findOneAuthenticatedById(authId);
-
-		Collection<Authenticated> authenticated = this.repository.findManyAuthenticated();
-		Collection<Authenticated> participants = new ArrayList<Authenticated>();
-		for (Authenticated au : authenticated) {
+		Collection<Authenticated> participants = entity.getParticipants();
+		Collection<Authenticated> res = new ArrayList<Authenticated>();
+		for (Authenticated au : participants) {
 			Integer auId = au.getId();
 			if (request.getModel().getBoolean(auId.toString()) == true) {
-				participants.add(au);
+				res.add(au);
 			}
 		}
-		if (!participants.contains(auth)) {
-			participants.add(auth);
-		}
-		entity.setParticipants(participants);
+		entity.setParticipants(res);
 		this.repository.save(entity);
 
 	}

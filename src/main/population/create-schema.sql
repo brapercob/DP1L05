@@ -135,7 +135,7 @@
     create table `customization` (
        `id` integer not null,
         `version` integer not null,
-        `spam_words` varchar(255),
+        `spam_words` varchar(1024),
         `threshold` double precision,
         primary key (`id`)
     ) engine=InnoDB;

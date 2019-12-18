@@ -55,3 +55,6 @@ acme.validation.offer.rangeFrom.greater = Debe ser mayor o igual a 0
 acme.validation.offer.rangeTo.correct = Debe ser mayor o igual a recompensa desde
 acme.validation.message.confirmation = Debe confirmar la creación
 acme.validation.message.spam = Spam detectado. Palabras como '"'{0}'"' están prohibidas
+acme.validation.application.is-published = El trabajo debe estar publicado
+acme.validation.application.is-on-date = La fecha limite ya ha pasado
+acme.validation.thread.isAuthenticated = No es posible eliminar tu propia cuenta
