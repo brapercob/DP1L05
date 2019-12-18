@@ -9,7 +9,9 @@ authenticated.thread.form.label.messages = Navigate to messages
 authenticated.thread.form.label.users = Manage participants
 authenticated.thread.form.label.messages.post = Post message
 authenticated.thread.form.label.involved = List involved users
+authenticated.thread.form.label.update.participants = Update involved users
 
 
 authenticated.thread.form.button.return = Return 
 authenticated.thread.form.button.create = Create 
+authenticated.thread.form.button.update = Update
