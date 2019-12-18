@@ -19,6 +19,7 @@
 
 <acme:form>
 	<acme:form-hidden path="hasDesc"/>
+	<acme:form-hidden path="hasApps"/>
 	<acme:form-textbox code="employer.job.form.label.reference" path="reference"/>
 	<acme:form-textbox code="employer.job.form.label.title" path="title"/>
 	
@@ -55,7 +56,7 @@
 	<acme:form-submit test="${command == 'show' && status != 'published'}"
 		code="employer.job.form.button.update"
 		action="/employer/job/update"/>
-	<acme:form-submit test="${command == 'show'}"
+	<acme:form-submit test="${command == 'show' && hasDesc && !hasApps}"
 		code="employer.job.form.button.delete"
 		action="/employer/job/delete"/>
 	<acme:form-submit test="${command == 'create'}"
@@ -64,7 +65,7 @@
 	<acme:form-submit test="${command == 'update'}"
 		code="employer.job.form.button.update"
 		action="/employer/job/update"/>
-	<acme:form-submit test="${command == 'delete'}"
+	<acme:form-submit test="${command == 'delete' && hasDesc && !hasApps}"
 		code="employer.job.form.button.delete"
 		action="/employer/job/delete"/>
 	<acme:form-return code="employer.job.form.button.return"/>

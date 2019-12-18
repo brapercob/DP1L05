@@ -58,3 +58,4 @@ acme.validation.job.duties = Los deberes deben sumar 100% de la carga de trabajo
 acme.validation.job.spam = Este texto es considerado spam
 acme.validation.duty.aproxTime = La suma total del porcentaje de tiempo de los deberes no puede ser mayor a 100
 acme.validation.auditorRequest = Este usuario ya es Auditor
+acme.validation.job.applications = No se puede borrar un trabajo al que han presentado solicitudes

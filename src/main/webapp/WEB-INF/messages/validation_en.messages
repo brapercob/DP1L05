@@ -57,3 +57,4 @@ acme.validation.job.duties = Duties must sum up to 100% the weekly workload
 acme.validation.job.spam = This text is considered spam
 acme.validation.duty.aproxTime = The total sum of the duties aproximate percent of time can't be greater than 100
 acme.validation.auditorRequest = This user is already an auditor
+acme.validation.job.applications = Cannot delete a job which have been applied to

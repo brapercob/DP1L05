@@ -18,23 +18,24 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <acme:form>
+	<acme:form-hidden path="jobPublished"/>
 	<acme:form-textbox code="employer.duty.form.label.title" path="title"/>
 	<acme:form-textbox code="employer.duty.form.label.description" path="description"/>
 	<acme:form-integer code="employer.duty.form.label.aproxTime" path="aproxTime"/>
 	
-	<acme:form-submit test="${command == 'show'}"
+	<acme:form-submit test="${command == 'show' && !jobPublished}"
 		code="employer.duty.form.button.update"
 		action="/employer/duty/update"/>
-	<acme:form-submit test="${command == 'show'}"
+	<acme:form-submit test="${command == 'show' && !jobPublished}"
 		code="employer.duty.form.button.delete"
 		action="/employer/duty/delete"/>
 	<acme:form-submit test="${command == 'create'}"
 		code="employer.duty.form.button.create"
 		action="/employer/duty/create?descriptorId=${descriptorId}"/>
-	<acme:form-submit test="${command == 'update'}"
+	<acme:form-submit test="${command == 'update' && !jobPublished}"
 		code="employer.duty.form.button.update"
 		action="/employer/duty/update"/>
-	<acme:form-submit test="${command == 'delete'}"
+	<acme:form-submit test="${command == 'delete' && !jobPublished}"
 		code="employer.duty.form.button.delete"
 		action="/employer/duty/delete"/>
 	<acme:form-return code="employer.duty.form.button.return"/>
