@@ -41,6 +41,8 @@ public class EmployerDescriptorCreateService implements AbstractCreateService<Em
 		assert errors != null;
 
 		request.bind(entity, errors);
+		int jobId = request.getModel().getInteger("jobId");
+		request.getModel().setAttribute("jobId", jobId);
 	}
 
 	@Override
@@ -58,10 +60,9 @@ public class EmployerDescriptorCreateService implements AbstractCreateService<Em
 		assert request != null;
 
 		Descriptor result = new Descriptor();
-		int jobId = request.getModel().getInteger("jobId");
-		Job j = this.jobRepository.findOneJobById(jobId);
-
-		result.setJob(j);
+		Integer jobId = request.getModel().getInteger("jobId");
+		Job job = this.jobRepository.findOneJobById(jobId);
+		result.setJob(job);
 
 		return result;
 	}
@@ -78,6 +79,11 @@ public class EmployerDescriptorCreateService implements AbstractCreateService<Em
 	public void create(final Request<Descriptor> request, final Descriptor entity) {
 		assert request != null;
 		assert entity != null;
+
+		int jobId = request.getModel().getInteger("jobId");
+		Job j = this.jobRepository.findOneJobById(jobId);
+
+		entity.setJob(j);
 
 		this.repository.save(entity);
 

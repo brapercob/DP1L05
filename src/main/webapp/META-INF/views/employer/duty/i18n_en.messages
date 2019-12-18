@@ -15,5 +15,7 @@ employer.duty.form.label.description = Description
 employer.duty.form.label.aproxTime = Aproximate percent of time
 
 
-
-employer.job.form.button.return = Return
+employer.duty.form.button.create = Create
+employer.duty.form.button.update = Update
+employer.duty.form.button.delete = Delete
+employer.duty.form.button.return = Return

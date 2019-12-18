@@ -42,6 +42,12 @@
 
 </jstl:if>
 
+	<jstl:if test="${command == 'show' && !hasDesc}">
+	<p>
+	<a href="employer/descriptor/create?jobId=${id}"><spring:message code="employer.job.form.label.descriptor.create" /></a>
+</p>
+	</jstl:if>
+
 
 	<acme:form-submit test="${command == 'show' && status != 'published'}"
 		code="employer.job.form.button.update"

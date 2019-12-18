@@ -18,9 +18,41 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <acme:form>
+	<acme:form-hidden path="hasDuties"/>
+	<acme:form-hidden path="isPublished"/>
+	<acme:form-hidden path="jobId"/>
 	<acme:form-textarea code="employer.descriptor.form.label.description" path="description"/>
-<p>
-	<a href="employer/duty/list?descriptorId=${id}"><spring:message code="employer.descriptor.form.label.duties" /></a>
+	<jstl:if test="${command == 'show' && !hasDuties}">
+	<p>
+	<a href="employer/duty/create?descriptorId=${id}"><spring:message code="employer.descriptor.form.label.duties.create" /></a>
 </p>
+	</jstl:if>
+	<jstl:if test="${command == 'show' && hasDuties}">
+		<p>
+		<a href="employer/duty/create?descriptorId=${id}"><spring:message code="employer.descriptor.form.label.duties.create" /></a>
+		</p>
+
+		<p>
+		<a href="employer/duty/list?descriptorId=${id}"><spring:message code="employer.descriptor.form.label.duties" /></a>
+		</p>
+	</jstl:if>
+
+
+<acme:form-submit test="${command == 'show' && !isPublished}"
+		code="employer.descriptor.form.button.update"
+		action="/employer/descriptor/update"/>
+	<acme:form-submit test="${command == 'show' && !isPublished}"
+		code="employer.descriptor.form.button.delete"
+		action="/employer/descriptor/delete"/>
+	<acme:form-submit test="${command == 'create'}"
+		code="employer.descriptor.form.button.create"
+		action="/employer/descriptor/create"/>
+	<acme:form-submit test="${command == 'update'}"
+		code="employer.descriptor.form.button.update"
+		action="/employer/descriptor/update"/>
+	<acme:form-submit test="${command == 'delete'}"
+		code="employer.descriptor.form.button.delete"
+		action="/employer/descriptor/delete"/>
+	<acme:form-return code="employer.descriptor.form.button.return"/>
 
 </acme:form>
