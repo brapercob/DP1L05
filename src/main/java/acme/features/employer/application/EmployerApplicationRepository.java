@@ -13,7 +13,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface EmployerApplicationRepository extends AbstractRepository {
 
-	@Query("select a from Application a where a.job.employer.id = ?1")
+	@Query("select a from Application a where a.job.employer.id = ?1 order by reference, status, creationMoment")
 	Collection<Application> findApplicationsByEmployerId(int id);
 
 	@Query("select e from Employer e where e.userAccount.id = ?1")

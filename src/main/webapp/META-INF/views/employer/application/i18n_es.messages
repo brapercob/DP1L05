@@ -27,3 +27,5 @@ employer.application.form.button.rejected = Rechazar
 
 employer.application.form.button.update = Actualizar
 employer.application.form.button.return = Volver
+
+error.justification.null = Se debe justificar el rechazo

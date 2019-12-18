@@ -27,3 +27,5 @@ employer.application.form.button.rejected = Reject
 
 employer.application.form.button.update = Update
 employer.application.form.button.return = Return
+
+error.justification.null = The rejection must be justified

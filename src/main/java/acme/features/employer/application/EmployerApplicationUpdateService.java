@@ -9,6 +9,7 @@ import acme.entities.roles.Employer;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
@@ -21,7 +22,14 @@ public class EmployerApplicationUpdateService implements AbstractUpdateService<E
 	@Override
 	public boolean authorise(final Request<Application> request) {
 		assert request != null;
-		return true;
+
+		Principal principal = request.getPrincipal();
+		Employer logged = this.repository.findEmployer(principal.getAccountId());
+		int id = request.getModel().getInteger("id");
+		Application ap = this.repository.findApplicationById(id);
+		Employer employer = ap.getJob().getEmployer();
+
+		return employer == logged;
 	}
 
 	// De la vista a la base de datos
@@ -63,9 +71,9 @@ public class EmployerApplicationUpdateService implements AbstractUpdateService<E
 		assert errors != null;
 
 		if (entity.getStatus().equals("rejected")) {
-			assert entity.getJustification() != "";
+			boolean statusEmpty = !entity.getJustification().equals("");
+			errors.state(request, statusEmpty, "justification", "error.justification.null");
 		}
-
 	}
 
 	@Override
@@ -73,6 +81,11 @@ public class EmployerApplicationUpdateService implements AbstractUpdateService<E
 		assert request != null;
 		assert entity != null;
 
-		this.repository.save(entity);
+		Application ap = this.repository.findApplicationById(entity.getId());
+
+		ap.setStatus(entity.getStatus());
+		ap.setJustification(entity.getJustification());
+
+		this.repository.save(ap);
 	}
 }
