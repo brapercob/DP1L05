@@ -27,6 +27,7 @@
        `id` integer not null,
         `version` integer not null,
         `creation_moment` datetime(6),
+        `justification` varchar(255),
         `qualifications` varchar(255),
         `reference` varchar(255),
         `skills` varchar(255),
@@ -135,7 +136,7 @@
     create table `customization` (
        `id` integer not null,
         `version` integer not null,
-        `spam_words` varchar(1024),
+        `spam_words` varchar(255),
         `threshold` double precision,
         primary key (`id`)
     ) engine=InnoDB;

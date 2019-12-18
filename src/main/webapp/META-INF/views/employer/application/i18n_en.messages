@@ -19,6 +19,13 @@ employer.application.form.label.statement = Statement
 employer.application.form.label.skills = Skills
 employer.application.form.label.qualifications = Qualifications
 employer.application.form.label.job.reference = Job
+employer.application.form.label.justification = Justification
 
+employer.application.form.button.check = Check 
+employer.application.form.button.accepted = Accept
+employer.application.form.button.rejected = Reject
 
+employer.application.form.button.update = Update
 employer.application.form.button.return = Return
+
+error.justification.null = The rejection must be justified

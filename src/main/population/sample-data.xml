@@ -852,7 +852,7 @@
 	
 	<bean name="application3" class="acme.entities.applications.Application">
 		<property name="reference" value="EMPT-JOBT:WORT" />
-		<property name="creationMoment" value="2018/02/11 23:59"/>
+		<property name="creationMoment" value="2019/11/30 23:59"/>
 		<property name="status" value="pending"/>
 		<property name="statement" value="Lorem ipsum sit dolor amet."/>
 		<property name="skills" value="Lorem"/>
