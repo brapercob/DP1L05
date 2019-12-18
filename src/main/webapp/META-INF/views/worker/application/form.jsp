@@ -16,14 +16,19 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <acme:form>
+	
+	<acme:form-hidden path="creationMoment"/>
+	<acme:form-hidden path="status"/>	
+	<acme:form-hidden path="job.reference"/>
 	<acme:form-textbox code="worker.application.form.label.reference" path="reference"/>
-	<acme:form-textbox code="worker.application.form.label.creationMoment" path="creationMoment"/>
-	<acme:form-moment code="worker.application.form.label.status" path="status"/>
 	<acme:form-money code="worker.application.form.label.statement" path="statement"/>
 	<acme:form-url code="worker.application.form.label.skills" path="skills"/>
 	<acme:form-textarea code="worker.application.form.label.qualifications" path="qualifications"/>
-	<acme:form-textarea code="worker.application.form.label.job.reference" path="job.reference"/>
 	
+	<acme:form-submit test="${command == 'create'}" 
+		code="worker.application.form.button.create"
+		action="/worker/application/create?jobId=${jobId}"
+	/>
 	<acme:form-return code="worker.application.form.button.return"/>
 
 </acme:form>

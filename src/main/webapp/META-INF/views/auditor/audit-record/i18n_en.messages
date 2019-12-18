@@ -14,7 +14,10 @@ authenticated.audit-records.list.moment = Creation moment
 
 authenticated.audit-records.form.title = Title: 
 authenticated.audit-records.form.status = Status: 
+auditor.audit-records.form.status.draft = Draft
+auditor.audit-records.form.status.published = Published
 authenticated.audit-records.form.moment = Creation moment: 
 authenticated.audit-records.form.body = Body: 
 
 authenticated.audit-records.form.return = Return
+auditor.audit-record.form.create = Create

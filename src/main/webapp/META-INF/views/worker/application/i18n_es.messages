@@ -20,4 +20,5 @@ worker.application.form.label.skills = Habilidades
 worker.application.form.label.qualifications = Cualificaciones
 worker.application.form.label.job.reference = Trabajo
 
+worker.application.form.button.create = Crear
 worker.application.form.button.return = Volver

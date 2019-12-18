@@ -31,6 +31,9 @@
 	<a href="auditor/audit-record/list?jobId=${id}"><spring:message code="auditor.job.form.label.auditRecord" /></a>
 </p>
 
+<p>
+	<a href="auditor/audit-record/create?jobId=${id}"><spring:message code="auditor.job.form.label.newAuditRecord" /></a>
+</p>
 	
 	<acme:form-return code="auditor.job.form.button.return"/>
 

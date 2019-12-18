@@ -58,3 +58,4 @@ acme.validation.message.spam = Spam detectado. Palabras como '"'{0}'"' están pr
 acme.validation.application.is-published = El trabajo debe estar publicado
 acme.validation.application.is-on-date = La fecha limite ya ha pasado
 acme.validation.thread.isAuthenticated = No es posible eliminar tu propia cuenta
+acme.validation.spam = ¡Esa boquita! Hemos encontrado algunas palabras prohibidas 
